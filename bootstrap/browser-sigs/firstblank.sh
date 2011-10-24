@@ -1,8 +1,5 @@
 #!/bin/sh
 
 while read LINE; do
-	if echo "$LINE" | egrep -q '^[^\w]$' ; then
-		exit 0;
-	fi
-	echo "$LINE"
+	echo "$LINE" | grep '^[A-Z]' || exit 0
 done
