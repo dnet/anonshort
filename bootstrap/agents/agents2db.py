@@ -27,8 +27,8 @@ def convert(agents_file, db_file):
         with file(agents_file, 'r') as txt:
             cursor.executemany('INSERT INTO agents (id, agent) VALUES (?, ?)',
                     parser.parse_agents(txt))
-            cursor.execute('INSERT INTO metadata (key, value) VALUES (?, ?)',
-                    ('counter', parser.counter))
+        cursor.execute('INSERT INTO metadata (key, value) VALUES (?, ?)',
+                ('counter', parser.counter))
 
 def main():
     import sys
