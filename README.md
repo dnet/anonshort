@@ -58,6 +58,11 @@ might also need to edit the `transform.sed` file there, to match the locale
 specific values used by your browser. (The current values assume an English
 or Hungarian browser.)
 
+Matching browser signatures to User-Agents
+------------------------------------------
+
+TODO
+
 Dependencies
 ------------
 

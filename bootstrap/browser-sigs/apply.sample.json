@@ -1,0 +1,9 @@
+[
+	{
+		"input": "foo.tpl",
+		"rules": [ { "type": "ua-contains", "value": "FooBrowser" } ]
+	}, {
+		"input": "bar.tpl",
+		"rules": [ { "type": "ua-matches", "value": "Bar(?:\\ *|\\+)42" } ]
+	}
+]
