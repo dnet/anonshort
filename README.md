@@ -61,7 +61,33 @@ or Hungarian browser.)
 Matching browser signatures to User-Agents
 ------------------------------------------
 
-TODO
+Browser signatures match User-Agents using simple set of rules written in a
+JSON file, this document implies that you're familiar with the format. The
+basic structure is an array of dictionaries, the matcher will evaluate these
+in the order they appear in the file, so it's important to always put the
+more specific rules in the front (for example every Chrome browser has the
+string "Safari" in the User-Agent, so it's better to test for Chrome first,
+and Safari afterwards). An example file, `apply.sample.json` can be found in
+the `bootstrap/browser-sigs` directory.
+
+The dictionary has to have two entries, `input` specifies the name of the
+template file, and `rules` contains an array of rules, which must all be
+satisfied in order to match the template. Each rule is a dictionary, which
+must contain a `type` entry of string type, currently two are supported.
+The first, `ua-contains` matches is the User-Agent contains the string in the
+`value` entry (case-sensitive), while `ua-matches` does the same but evaluates
+`value` as an extended regular expression.
+
+The coverage of the templates and the JSON can be tested with the `apply.py`
+script in the `bootstrap/browser-sigs` directory. The two parameters are the
+file names of the User-Agent database and the JSON file, respectively.
+
+	python apply.py agents.db apply.json
+
+If everything goes well, the script finishes with an exit code of 0, and
+without any output. If an I/O error occurs or the JSON file doesn't cover every
+User-Agent in the database, it prints a standard Python stack trace, including
+the User-Agent in question in the former case.
 
 Dependencies
 ------------
